@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Music Catalog</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Music Collection Catalog Lookup</h1>
+      <div class="format-select-wrapper">
+        <h2>select format</h2>
+        <label for="btn-records">Records</label>
+        <input type="radio" name="format" id="btn-records" value="Records" />
+        <label for="btn-tapes">Tapes</label>
+        <input type="radio" name="format" id="btn-tapes" value="Tapes" />
+        <label for="btn-cds">CDs</label>
+        <input type="radio" name="format" id="btn-cds" value="CDs" />
+      </div>
+    </header>
+    <div class="search-wrapper">
+      <form>
+        <div class="search-field-select-wrapper">
+          <h3>select search field</h3>
+          <label for="btn-artist">artist</label>
+          <input
+            type="radio"
+            name="search-field"
+            id="btn-artist"
+            value="Artist"
+          />
+          <label for="btn-title">title</label>
+          <input
+            type="radio"
+            name="search-field"
+            id="btn-title"
+            value="Title"
+          />
+          <label for="btn-location">location</label>
+          <input
+            type="radio"
+            name="search-field"
+            id="btn-location"
+            value="Location"
+          />
+        </div>
+        <label for="search"
+          >Search For <span id="search-label-span"></span> in
+          <span id="search-format-span"></span></label
+        ><br />
+        <input type="text" name="search-term" id="search-term" />
+        <button id="btn-search">SEARCH</button>
+      </form>
+      <div class="results-wrapper">
+        <h4>results</h4>
+      </div>
+    </div>
+  </body>
+</html>
