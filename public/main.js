@@ -28,6 +28,18 @@ formatRadioBtns.forEach((btn) => {
   });
 });
 
+function sortByKey(array, key) {
+  return array.sort(function (a, b) {
+    if (a[key].toLowerCase() < b[key].toLowerCase()) {
+      return -1;
+    }
+    if (a[key].toLowerCase() > b[key].toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
 async function sendSearchRequest() {
   const searchTerm = searchTermElem.value;
   const field = searchField;
@@ -46,12 +58,13 @@ async function sendSearchRequest() {
   const data = await response.json();
   let qty = data.length;
   let html = "";
-  data.forEach((item) => {
+
+  sortByKey(data, "artist").forEach((item) => {
     html += `<p>${item.artist} - ${item.title} - ${item.location}</p>`;
   });
   resultsDiv.innerHTML = html;
   resultsSpan.innerText = ` - ${qty}`;
-  console.log(data);
+  // console.log(data);
 }
 
 btnSearch.addEventListener("click", (e) => {
