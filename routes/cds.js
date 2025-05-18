@@ -14,4 +14,39 @@ router.get("/", (req, res, next) => {
   );
 });
 
+router.post("/", (req, res, next) => {
+  const { searchField, searchTerm } = req.body;
+  // console.log(searchField.toLowerCase());
+  console.log(searchTerm);
+  if (searchField.toLowerCase() === "artist") {
+    pool.query(
+      "select * from cds where artist like $1",
+      [`%${searchTerm}%`],
+      (err, result) => {
+        // console.log(result.rows);
+        res.status(200).send(result.rows);
+      }
+    );
+  } else if (searchField.toLowerCase() === "title") {
+    pool.query(
+      "select * from cds where title like $1",
+      [`%${searchTerm}%`],
+      (err, result) => {
+        // console.log(result.rows);
+        res.status(200).send(result.rows);
+      }
+    );
+  } else if (searchField.toLowerCase() === "location") {
+    pool.query(
+      "select * from cds where location like $1",
+      [`%${searchTerm}%`],
+      (err, result) => {
+        // console.log(result.rows);
+        res.status(200).send(result.rows);
+      }
+    );
+  }
+  // res.sendStatus(200);
+});
+
 module.exports = router;

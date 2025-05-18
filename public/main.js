@@ -8,6 +8,8 @@ const searchTermElem = document.getElementById("search-term");
 const formatRadioBtns = document.querySelectorAll(
   '.format-select-wrapper input[type="radio"]'
 );
+const resultsDiv = document.querySelector(".results");
+const resultsSpan = document.querySelector("h4 span");
 
 let searchField;
 let format;
@@ -26,8 +28,7 @@ formatRadioBtns.forEach((btn) => {
   });
 });
 
-btnSearch.addEventListener("click", (e) => {
-  e.preventDefault();
+async function sendSearchRequest() {
   const searchTerm = searchTermElem.value;
   const field = searchField;
   const searchObj = {
@@ -41,11 +42,19 @@ btnSearch.addEventListener("click", (e) => {
     },
     body: JSON.stringify(searchObj),
   };
-  async function sendSearchRequest() {
-    const response = await fetch(`/api/${format}`, options);
-    const data = await response.json();
-    console.log(data);
-  }
+  const response = await fetch(`/api/${format}`, options);
+  const data = await response.json();
+  let qty = data.length;
+  let html = "";
+  data.forEach((item) => {
+    html += `<p>${item.artist} - ${item.title} - ${item.location}</p>`;
+  });
+  resultsDiv.innerHTML = html;
+  resultsSpan.innerText = ` - ${qty}`;
+  console.log(data);
+}
 
+btnSearch.addEventListener("click", (e) => {
+  e.preventDefault();
   sendSearchRequest();
 });

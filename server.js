@@ -11,6 +11,10 @@ app.use("/api/cds", cds);
 app.use("/api/tapes", tapes);
 app.use("/api/records", records);
 
+// app.get("/api", (req, res, next) => {
+//   res.sendStatus(200);
+// });
+
 const PORT = process.env.PORT || 5500;
 
 app.listen(PORT, () => {
