@@ -1,8 +1,6 @@
 const searchRadioBtns = document.querySelectorAll(
   '.search-field-select-wrapper input[type="radio"]'
 );
-const searchSpan = document.getElementById("search-label-span");
-const formatSpan = document.getElementById("search-format-span");
 const btnSearch = document.getElementById("btn-search");
 const searchTermElem = document.getElementById("search-term");
 const formatRadioBtns = document.querySelectorAll(
@@ -17,14 +15,12 @@ let format;
 searchRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
     searchField = e.target.value;
-    searchSpan.innerText = searchField;
   });
 });
 
 formatRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
     format = e.target.value;
-    formatSpan.innerText = format;
   });
 });
 
