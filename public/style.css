@@ -73,7 +73,7 @@ fieldset input[type="radio"] {
 }
 
 /* the record animation */
-.bg-animation {
+.record-animation-wrapper {
   position: fixed;
   width: 650px;
   height: 650px;
@@ -83,7 +83,7 @@ fieldset input[type="radio"] {
   scale: 0.7;
 }
 
-.bg-record {
+.record-wrapper {
   width: 80%;
   aspect-ratio: 1;
   /* outline: 2px solid red; */
@@ -135,9 +135,20 @@ fieldset input[type="radio"] {
   }
 }
 
+.tape-player-animation-wrapper {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  /* outline: 2px solid lime; */
+  bottom: -3rem;
+  right: 5rem;
+  scale: 0.7;
+}
+
 .results {
   margin-top: 1rem;
   max-width: 65%;
+  font-size: 1.25rem;
 }
 
 th {
