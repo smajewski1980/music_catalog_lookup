@@ -7,7 +7,7 @@ const formatRadioBtns = document.querySelectorAll(
   '.format-select-wrapper input[type="radio"]'
 );
 const resultsDiv = document.querySelector(".results");
-const resultsSpan = document.querySelector("h4 span");
+const resultsQty = document.querySelector(".qty");
 
 let searchField;
 let format;
@@ -61,7 +61,7 @@ async function sendSearchRequest() {
   });
   html += "</tbody></table>";
   resultsDiv.innerHTML = html;
-  resultsSpan.innerText = ` - ${qty}`;
+  resultsQty.innerText = `There are ${qty} results.`;
   // console.log(data);
 }
 

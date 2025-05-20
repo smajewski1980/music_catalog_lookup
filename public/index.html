@@ -12,55 +12,59 @@
       <div class="bg-record">
         <img src="./assets/record.png" alt="" />
       </div>
+
       <div class="bg-tonearm">
         <img src="./assets/tonearm.png" alt="" />
       </div>
     </div>
-    <header>
-      <h1>Music Collection Catalog Lookup</h1>
-      <div class="format-select-wrapper">
-        <h2>select format</h2>
-        <label for="btn-records">Records</label>
-        <input type="radio" name="format" id="btn-records" value="Records" />
-        <label for="btn-tapes">Tapes</label>
-        <input type="radio" name="format" id="btn-tapes" value="Tapes" />
-        <label for="btn-cds">CDs - Main</label>
-        <input type="radio" name="format" id="btn-cds" value="CDs" />
-      </div>
-    </header>
-    <div class="search-wrapper">
-      <form>
-        <div class="search-field-select-wrapper">
-          <h3>select search field</h3>
-          <label for="btn-artist">artist</label>
-          <input
-            type="radio"
-            name="search-field"
-            id="btn-artist"
-            value="Artist"
-          />
-          <label for="btn-title">title</label>
-          <input
-            type="radio"
-            name="search-field"
-            id="btn-title"
-            value="Title"
-          />
-          <label for="btn-location">location</label>
-          <input
-            type="radio"
-            name="search-field"
-            id="btn-location"
-            value="Location"
-          />
-        </div>
-        <input type="text" name="search-term" id="search-term" />
-        <button id="btn-search">SEARCH</button>
-      </form>
-      <div class="results-wrapper">
-        <h4>results<span></span></h4>
-        <div class="results"></div>
-      </div>
+
+    <h1>Music Collection Catalog Lookup</h1>
+
+    <fieldset class="format-select-wrapper">
+      <legend>select format</legend>
+      <label for="btn-records">Records</label>
+      <input type="radio" name="format" id="btn-records" value="Records" />
+      <label for="btn-tapes">Tapes</label>
+      <input type="radio" name="format" id="btn-tapes" value="Tapes" />
+      <label for="btn-cds">CDs - Main</label>
+      <input type="radio" name="format" id="btn-cds" value="CDs" />
+    </fieldset>
+
+    <div class="search-outer-wrapper">
+      <fieldset class="search-wrapper">
+        <legend>select search field</legend>
+        <form>
+          <div class="search-field-select-wrapper">
+            <label for="btn-artist">artist</label>
+            <input
+              type="radio"
+              name="search-field"
+              id="btn-artist"
+              value="Artist"
+            />
+            <label for="btn-title">title</label>
+            <input
+              type="radio"
+              name="search-field"
+              id="btn-title"
+              value="Title"
+            />
+            <label for="btn-location">location</label>
+            <input
+              type="radio"
+              name="search-field"
+              id="btn-location"
+              value="Location"
+            />
+            <input type="text" name="search-term" id="search-term" />
+            <button id="btn-search">SEARCH</button>
+          </div>
+        </form>
+      </fieldset>
+      <p class="qty"></p>
+    </div>
+    <div class="results-wrapper">
+      <div class="results"></div>
     </div>
   </body>
 </html>
