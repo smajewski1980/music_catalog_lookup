@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
@@ -15,59 +19,72 @@ body {
   width: 650px;
   height: 650px;
   /* outline: 2px solid lime; */
-  right: 0rem;
+  top: -5.75rem;
+  right: -5rem;
+  scale: 0.7;
 }
 
 .bg-record {
   width: 80%;
   aspect-ratio: 1;
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   position: absolute;
   bottom: 0;
-  left: 0;
+  right: 8rem;
   border-radius: 50%;
-  opacity: 0.35;
+  /* opacity: 0.35; */
   display: grid;
   place-content: center;
   font-size: 3rem;
   /* tried to get close to 33 1/3 rpm */
-  animation: spin-record 1.8s linear infinite;
+  /* animation: spin-record 1.8s linear infinite; */
+  animation: spin-record 4s linear infinite;
+  /* tried to link record to scroll too... */
+  /* animation-name: spin-record;
+  animation-timing-function: linear;
+  animation-timeline: scroll(); */
 }
 
 .bg-tonearm {
-  width: 50px;
+  --start-angle: 22deg;
+  --end-angle: 52deg;
+  /* width: 50px;
   height: 75%;
-  outline: 2px solid hotpink;
+  outline: 2px solid hotpink; */
   position: absolute;
-  right: 6rem;
-  transform-origin: 40px 25px;
+  right: -3.5rem;
+  top: -2rem;
+  /* transform-origin: 40px 25px; */
+  transform-origin: 75px 200px;
   animation-name: move-tonearm;
   animation-timeline: scroll();
+  scale: 0.7;
+  rotate: var(--start-angle);
 }
 
 @keyframes move-tonearm {
   0%,
   50%,
   100% {
-    rotate: 0deg;
+    rotate: var(--start-angle);
   }
 
   25%,
   75% {
-    rotate: 20deg;
+    rotate: var(--end-angle);
   }
 }
 
-.bg-tonearm::after {
+/* .bg-tonearm::after {
   content: "";
   position: absolute;
   width: 75px;
   height: 125px;
-  outline: 2px solid red;
+  outline: 2px solid lime;
   bottom: -50px;
   right: 0px;
   rotate: 35deg;
-}
+} */
 
 @keyframes spin-record {
   to {
