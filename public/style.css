@@ -14,7 +14,7 @@ body {
   position: fixed;
   width: 650px;
   height: 650px;
-  outline: 2px solid lime;
+  /* outline: 2px solid lime; */
   right: 0rem;
 }
 
@@ -26,7 +26,7 @@ body {
   bottom: 0;
   left: 0;
   border-radius: 50%;
-  /* opacity: 0.35; */
+  opacity: 0.35;
   display: grid;
   place-content: center;
   font-size: 3rem;
@@ -40,18 +40,20 @@ body {
   outline: 2px solid hotpink;
   position: absolute;
   right: 6rem;
-  /* rotate: 20deg; */
-  transform-origin: top center;
-  animation: move-tonearm 15s ease-in-out infinite;
+  transform-origin: 40px 25px;
+  animation-name: move-tonearm;
+  animation-timeline: scroll();
 }
 
 @keyframes move-tonearm {
   0%,
+  50%,
   100% {
     rotate: 0deg;
   }
 
-  50% {
+  25%,
+  75% {
     rotate: 20deg;
   }
 }
