@@ -57,6 +57,7 @@ body {
   /* transform-origin: 40px 25px; */
   transform-origin: 75px 200px;
   animation-name: move-tonearm;
+  animation-timing-function: linear;
   animation-timeline: scroll();
   scale: 0.7;
   rotate: var(--start-angle);
@@ -90,4 +91,29 @@ body {
   to {
     rotate: 360deg;
   }
+}
+
+.results {
+  max-width: 65%;
+}
+
+th {
+  text-align: left;
+}
+
+.td-artist {
+  max-width: 450px;
+}
+.td-title {
+  max-width: 450px;
+}
+.td-location {
+  max-width: 25%;
+}
+
+td {
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+  padding-right: 1rem;
 }

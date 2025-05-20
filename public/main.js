@@ -53,11 +53,13 @@ async function sendSearchRequest() {
   const response = await fetch(`/api/${format}`, options);
   const data = await response.json();
   let qty = data.length;
-  let html = "";
+  let html =
+    "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
 
   sortByKey(data, "artist").forEach((item) => {
-    html += `<p>${item.artist} - ${item.title} - ${item.location}</p>`;
+    html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
   });
+  html += "</tbody></table>";
   resultsDiv.innerHTML = html;
   resultsSpan.innerText = ` - ${qty}`;
   // console.log(data);
