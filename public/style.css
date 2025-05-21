@@ -145,6 +145,47 @@ fieldset input[type="radio"] {
   scale: 0.7;
 }
 
+.reel-one,
+.reel-two {
+  position: absolute;
+  top: -3.75rem;
+  left: -0.4rem;
+  animation: spin-reel 5s linear infinite;
+  z-index: 999;
+}
+
+.reel-two {
+  left: 20.75rem;
+}
+
+@keyframes spin-reel {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.tape-one,
+.tape-two {
+  position: absolute;
+  top: -3.75rem;
+  left: -0.4rem;
+  animation: spin-tape 5s linear infinite;
+}
+
+@keyframes spin-tape {
+  from {
+    rotate: 40deg;
+  }
+
+  to {
+    rotate: 400deg;
+  }
+}
+
+.tape-two {
+  left: 20.75rem;
+}
+
 .results {
   margin-top: 1rem;
   max-width: 65%;
