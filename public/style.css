@@ -518,8 +518,11 @@ fieldset input[type="radio"] {
 #cd-left-arm-1,
 #cd-left-arm-2,
 #cd-right-arm-1,
-#cd-right-arm-2 {
+#cd-right-arm-2,
+#left-arm-wrapper,
+#right-arm-wrapper {
   position: absolute;
+  outline: 2px solid red;
 }
 
 #cd-body {
@@ -555,28 +558,52 @@ fieldset input[type="radio"] {
   left: 59%;
 }
 
+#left-arm-wrapper {
+  /* rotate: 25deg; */
+  transform-origin: bottom right;
+  outline: 2px solid blue;
+  height: 175px;
+  width: 130px;
+  z-index: 2;
+  top: 15%;
+  left: 5%;
+}
+
 #cd-left-arm-1 {
-  top: 31%;
-  left: 18%;
+  top: 57.5%;
+  left: 53%;
   z-index: 3;
 }
 
 #cd-left-arm-2 {
-  top: 15%;
-  left: 5.5%;
   z-index: 2;
+  /* rotate: 25deg; */
+  transform-origin: bottom right;
+}
+
+#right-arm-wrapper {
+  /* rotate: 25deg; */
+  transform-origin: top left;
+  outline: 2px solid green;
+  height: 175px;
+  width: 130px;
+  z-index: 2;
+  top: 45%;
+  left: 59%;
 }
 
 #cd-right-arm-1 {
-  top: 43%;
-  left: 62.5%;
+  /* top: 43%;
+  left: 63.5%; */
   z-index: 3;
 }
 
 #cd-right-arm-2 {
-  top: 53.5%;
-  left: 73.5%;
+  top: 36%;
+  left: 44%;
   z-index: 2;
+  /* rotate: 25deg; */
+  transform-origin: top left;
 }
 
 /* end cd animation************************************** */
