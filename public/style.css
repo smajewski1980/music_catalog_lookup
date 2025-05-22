@@ -520,9 +520,11 @@ fieldset input[type="radio"] {
 #cd-right-arm-1,
 #cd-right-arm-2,
 #left-arm-wrapper,
-#right-arm-wrapper {
+#right-arm-wrapper,
+#left-leg-wrapper,
+#right-leg-wrapper {
   position: absolute;
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
 }
 
 #cd-body {
@@ -533,35 +535,59 @@ fieldset input[type="radio"] {
 #cd-left-leg-1,
 #cd-right-leg-1 {
   z-index: -1;
-  top: 60%;
 }
 #cd-left-leg-2,
 #cd-right-leg-2 {
   z-index: -2;
 }
 
+#left-leg-wrapper {
+  /* rotate: 25deg; */
+  transform-origin: top center;
+  /* outline: 2px solid purple; */
+  height: 250px;
+  width: 130px;
+  z-index: -1;
+  top: 60%;
+  left: 20%;
+}
+
 #cd-left-leg-1 {
-  left: 30%;
+  left: 31%;
 }
 
 #cd-left-leg-2 {
-  top: 77%;
-  left: 21.5%;
+  /* rotate: 25deg; */
+  top: 38%;
+  transform-origin: top right;
 }
 
-#cd-right-leg-1 {
-  left: 56%;
+#right-leg-wrapper {
+  /* rotate: 25deg; */
+  transform-origin: top center;
+  /* outline: 2px solid purple; */
+  height: 250px;
+  width: 130px;
+  z-index: -1;
+  top: 60%;
+  left: 55%;
 }
+
+/* #cd-right-leg-1 {
+  left: 56%;
+} */
 
 #cd-right-leg-2 {
-  top: 77%;
-  left: 59%;
+  /* rotate: 25deg; */
+  top: 38%;
+  left: 11%;
+  transform-origin: 0px 18px;
 }
 
 #left-arm-wrapper {
   /* rotate: 25deg; */
   transform-origin: bottom right;
-  outline: 2px solid blue;
+  /* outline: 2px solid blue; */
   height: 175px;
   width: 130px;
   z-index: 2;
@@ -584,7 +610,7 @@ fieldset input[type="radio"] {
 #right-arm-wrapper {
   /* rotate: 25deg; */
   transform-origin: top left;
-  outline: 2px solid green;
+  /* outline: 2px solid green; */
   height: 175px;
   width: 130px;
   z-index: 2;
