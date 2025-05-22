@@ -21,6 +21,9 @@ searchRadioBtns.forEach((btn) => {
 formatRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
     format = e.target.value;
+    // if (format === "CDs") {
+    //   addAnimations();
+    // }
   });
 });
 
