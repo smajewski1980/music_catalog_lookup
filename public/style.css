@@ -88,17 +88,17 @@ fieldset input[type="radio"] {
   aspect-ratio: 1;
   /* outline: 2px solid red; */
   position: absolute;
-  bottom: 0;
-  right: 8rem;
+  bottom: -2rem;
+  right: 10rem;
   border-radius: 50%;
   /* opacity: 0.35; */
   display: grid;
   place-content: center;
   font-size: 3rem;
-  /* tried to get close to 33 1/3 rpm */
+  /* tried to get close to 33 1/3 rpm, seemed too fast */
   /* animation: spin-record 1.8s linear infinite; */
   animation: spin-record 4s linear infinite;
-  /* tried to link record to scroll too... */
+  /* tried to link record to scroll too...didn't look right */
   /* animation-name: spin-record;
   animation-timing-function: linear;
   animation-timeline: scroll(); */
@@ -106,16 +106,16 @@ fieldset input[type="radio"] {
 
 .bg-tonearm {
   --start-angle: 22deg;
-  --end-angle: 52deg;
+  --end-angle: 50deg;
 
   position: absolute;
-  right: -3.5rem;
-  top: -2rem;
+  right: -2.5rem;
+  top: 2rem;
   transform-origin: 75px 200px;
   animation-name: move-tonearm;
   animation-timing-function: linear;
   animation-timeline: scroll();
-  scale: 0.7;
+  scale: 0.6;
   rotate: var(--start-angle);
   filter: drop-shadow(0px 3px 2px white);
 }
@@ -142,7 +142,7 @@ fieldset input[type="radio"] {
   height: 500px;
   /* outline: 2px solid lime; */
   bottom: -3rem;
-  right: 5rem;
+  right: 6.5rem;
   scale: 0.7;
 }
 
