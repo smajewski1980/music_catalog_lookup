@@ -12,6 +12,9 @@ const resultsQty = document.querySelector(".qty");
 let searchField;
 let format;
 
+let page = 1;
+const offset = 500;
+
 searchRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
     searchField = e.target.value;
@@ -67,7 +70,10 @@ async function sendSearchRequest() {
     },
     body: JSON.stringify(searchObj),
   };
-  const response = await fetch(`/api/${format}`, options);
+  const response = await fetch(
+    `/api/${format}?page=${page}&offset=${offset}`,
+    options
+  );
   const data = await response.json();
 
   setHTML(data);

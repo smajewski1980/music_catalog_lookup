@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../db_connect");
+const query = require("../middleware/query");
 
 router.get("/", (req, res, next) => {
   pool.query(
@@ -12,7 +13,10 @@ router.get("/", (req, res, next) => {
   );
 });
 
-router.post("/", (req, res, next) => {
+router.post("/", query, (req, res, next) => {
+  console.log("xx" + req.page);
+  console.log("xx" + req.offset);
+
   const { searchField, searchTerm } = req.body;
   console.log(searchTerm);
   if (searchField.toLowerCase() === "artist") {
