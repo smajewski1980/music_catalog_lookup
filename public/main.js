@@ -12,7 +12,7 @@ const resultsQty = document.querySelector(".qty");
 let searchField;
 let format;
 
-let page = 1;
+let currPage = 1;
 const offset = 250;
 
 const totalQtyElem = document.getElementById("totalQty");
@@ -45,32 +45,30 @@ function sortByKey(array, key) {
   });
 }
 
+// i want to try getting the data but only generating html a little at a times
+
 // need pagination
 async function setQtyText(qty) {
-  // if the searchterm input is empty, the results will be for all, therefore we need the total qty for that format
-  if (!searchTermElem.value) {
-    const response = await fetch(`/api/${format.toLowerCase()}/total`);
-    const data = await response.json();
-    // console.log(data.count);
-    totalQtyElem.innerText = `Viewing ${qty > offset ? offset : qty} of ${
-      data.count
-    } results.`;
-    setPagination(qty);
-  } else {
-    totalQtyElem.innerText = `Viewing ${
-      qty > offset ? offset : qty
-    } of ${qty} results.`;
-    setPagination(qty);
-  }
+  totalQtyElem.innerText = `Viewing ${qty} of ${qty} results.`;
+  // setPagination(null);
+  paginationElem.innerText = "";
+  // const response = await fetch(`/api/${format.toLowerCase()}/total`);
+  // const data = await response.json();
+  // totalQtyElem.innerText = `Viewing ${qty > offset ? offset : qty} of ${
+  //   data.count
+  // } results.`;
+  // setPagination(data.count);
 }
 
 // need to dynamically hook up the pagination links
-function setPagination(qty) {
-  if (qty === offset && !searchTermElem.value) {
-    paginationElem.innerText = "we should have pagination here";
-  } else {
-    paginationElem.innerText = "";
-  }
+async function setPagination() {
+  const response = await fetch(`/api/${format.toLowerCase()}/total`);
+  const data = await response.json();
+
+  const numPages = Math.ceil(data.count / offset);
+  totalQtyElem.innerText = `Viewing ${offset} of ${data.count} results.`;
+  paginationElem.innerText = "";
+  paginationElem.innerText = `${numPages} pages`;
 }
 
 function setHTML(data) {
@@ -85,6 +83,9 @@ function setHTML(data) {
   resultsDiv.innerHTML = html;
   // resultsQty.innerText = `There are ${qty} results.`;
   setQtyText(qty);
+  if (qty === offset) {
+    setPagination();
+  }
 }
 
 async function sendSearchRequest() {
@@ -102,7 +103,7 @@ async function sendSearchRequest() {
     body: JSON.stringify(searchObj),
   };
   const response = await fetch(
-    `/api/${format}?page=${page}&offset=${offset}`,
+    `/api/${format}?page=${currPage}&offset=${offset}`,
     options
   );
   const data = await response.json();
