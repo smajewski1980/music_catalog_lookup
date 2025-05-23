@@ -24,7 +24,7 @@ const elementsArray = [
   leftlegLower,
   rightlegLower,
 ];
-// still have to make the classes and separate the css animations
+
 const animationClasses = [
   "animation-wrapper-animation",
   "cd-body-animation",
@@ -44,19 +44,18 @@ function addAnimations() {
   }
 }
 
-// function handleSearchClick() {
-//   if (cdsFlag) {
-//     addAnimations();
-//   }
+function handleSearchClick() {
+  if (cdsFlag) {
+    addAnimations();
+    setTimeout(() => {
+      cdsFlag = false;
+    }, 2000);
+  }
+}
 
-//   setTimeout(() => {
-//     cdsFlag = false;
-//   }, 2000);
-// }
-
-// btnSearch.addEventListener("click", handleSearchClick);
+btnSearch.addEventListener("click", handleSearchClick);
 
 // this is going to allow the cd animation to happen when search is pressed if cds are selected
-// btnCds.addEventListener("click", () => {
-//   cdsFlag = true;
-// });
+btnCds.addEventListener("click", () => {
+  cdsFlag = true;
+});
