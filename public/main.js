@@ -39,6 +39,20 @@ function sortByKey(array, key) {
   });
 }
 
+// need pagination
+function setHTML(data) {
+  let qty = data.length;
+  let html =
+    "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
+
+  sortByKey(data, "artist").forEach((item) => {
+    html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
+  });
+  html += "</tbody></table>";
+  resultsDiv.innerHTML = html;
+  resultsQty.innerText = `There are ${qty} results.`;
+}
+
 async function sendSearchRequest() {
   const searchTerm = searchTermElem.value;
   const field = searchField;
@@ -55,16 +69,9 @@ async function sendSearchRequest() {
   };
   const response = await fetch(`/api/${format}`, options);
   const data = await response.json();
-  let qty = data.length;
-  let html =
-    "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
 
-  sortByKey(data, "artist").forEach((item) => {
-    html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
-  });
-  html += "</tbody></table>";
-  resultsDiv.innerHTML = html;
-  resultsQty.innerText = `There are ${qty} results.`;
+  setHTML(data);
+
   // console.log(data);
 }
 

@@ -503,7 +503,7 @@ fieldset input[type="radio"] {
 /* cd animation ********************************************************* */
 .cd-animation-wrapper {
   --total-animation-duration: 1s;
-  --delay: 1s;
+  --delay: 0s;
   width: 500px;
   height: 600px;
   position: fixed;
