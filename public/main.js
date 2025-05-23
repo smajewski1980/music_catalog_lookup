@@ -13,7 +13,7 @@ let searchField;
 let format;
 
 let page = 1;
-const offset = 500;
+const offset = 300;
 
 searchRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
