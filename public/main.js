@@ -47,44 +47,46 @@ function sortByKey(array, key) {
 
 // i want to try getting the data but only generating html a little at a times
 
-// need pagination
 async function setQtyText(qty) {
-  totalQtyElem.innerText = `Viewing ${qty} of ${qty} results.`;
-  // setPagination(null);
-  paginationElem.innerText = "";
-  // const response = await fetch(`/api/${format.toLowerCase()}/total`);
-  // const data = await response.json();
-  // totalQtyElem.innerText = `Viewing ${qty > offset ? offset : qty} of ${
-  //   data.count
-  // } results.`;
-  // setPagination(data.count);
+  if (qty <= offset) {
+    totalQtyElem.innerText = `Viewing ${qty} of ${qty} results.`;
+    paginationElem.innerText = "";
+  } else {
+    totalQtyElem.innerText = `Viewing ${offset} of ${qty} results.`;
+    paginationElem.innerText = "";
+    const numPages = Math.ceil(qty / offset);
+
+    paginationElem.innerText = `${numPages} pages`;
+  }
 }
 
-// need to dynamically hook up the pagination links
-async function setPagination() {
-  const response = await fetch(`/api/${format.toLowerCase()}/total`);
-  const data = await response.json();
+async function setPagination(data) {
+  // const response = await fetch(`/api/${format.toLowerCase()}/total`);
+  // const data = await response.json();
 
-  const numPages = Math.ceil(data.count / offset);
-  totalQtyElem.innerText = `Viewing ${offset} of ${data.count} results.`;
-  paginationElem.innerText = "";
-  paginationElem.innerText = `${numPages} pages`;
+  resultsDiv.innerHTML = "";
+
+  let dataChunk = data.slice(0, offset);
+  console.log(dataChunk.length);
+  setHTML(dataChunk);
+  setQtyText(data.length);
 }
 
 function setHTML(data) {
   let qty = data.length;
-  let html =
-    "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
+  if (qty <= offset) {
+    let html =
+      "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
 
-  sortByKey(data, "artist").forEach((item) => {
-    html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
-  });
-  html += "</tbody></table>";
-  resultsDiv.innerHTML = html;
-  // resultsQty.innerText = `There are ${qty} results.`;
-  setQtyText(qty);
-  if (qty === offset) {
-    setPagination();
+    const sortedData = sortByKey(data, "artist");
+    sortedData.forEach((item) => {
+      html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
+    });
+    html += "</tbody></table>";
+    resultsDiv.innerHTML = html;
+    setQtyText(qty);
+  } else {
+    setPagination(data);
   }
 }
 
