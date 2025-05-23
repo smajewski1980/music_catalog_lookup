@@ -13,7 +13,10 @@ let searchField;
 let format;
 
 let page = 1;
-const offset = 300;
+const offset = 250;
+
+const totalQtyElem = document.getElementById("totalQty");
+const paginationElem = document.getElementById("pagination");
 
 searchRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
@@ -43,6 +46,33 @@ function sortByKey(array, key) {
 }
 
 // need pagination
+async function setQtyText(qty) {
+  // if the searchterm input is empty, the results will be for all, therefore we need the total qty for that format
+  if (!searchTermElem.value) {
+    const response = await fetch(`/api/${format.toLowerCase()}/total`);
+    const data = await response.json();
+    // console.log(data.count);
+    totalQtyElem.innerText = `Viewing ${qty > offset ? offset : qty} of ${
+      data.count
+    } results.`;
+    setPagination(qty);
+  } else {
+    totalQtyElem.innerText = `Viewing ${
+      qty > offset ? offset : qty
+    } of ${qty} results.`;
+    setPagination(qty);
+  }
+}
+
+// need to dynamically hook up the pagination links
+function setPagination(qty) {
+  if (qty === offset && !searchTermElem.value) {
+    paginationElem.innerText = "we should have pagination here";
+  } else {
+    paginationElem.innerText = "";
+  }
+}
+
 function setHTML(data) {
   let qty = data.length;
   let html =
@@ -53,7 +83,8 @@ function setHTML(data) {
   });
   html += "</tbody></table>";
   resultsDiv.innerHTML = html;
-  resultsQty.innerText = `There are ${qty} results.`;
+  // resultsQty.innerText = `There are ${qty} results.`;
+  setQtyText(qty);
 }
 
 async function sendSearchRequest() {

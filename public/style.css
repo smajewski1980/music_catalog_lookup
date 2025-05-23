@@ -889,3 +889,7 @@ td {
   white-space: nowrap;
   padding-right: 1rem;
 }
+
+.pagination-text {
+  font-size: 1.25rem;
+}
