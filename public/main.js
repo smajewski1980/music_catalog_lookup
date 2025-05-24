@@ -17,6 +17,7 @@ const offset = 250;
 
 const totalQtyElem = document.getElementById("totalQty");
 const paginationElem = document.getElementById("pagination");
+const pageInput = document.getElementById("page-input");
 
 searchRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
@@ -66,9 +67,11 @@ async function setPagination() {
   const data = await response.json();
 
   const numPages = Math.ceil(data.count / offset);
+  pageInput.max = numPages;
+  pageInput.style.display = "inline";
   totalQtyElem.innerText = `Viewing ${offset} of ${data.count} results.`;
   paginationElem.innerText = "";
-  paginationElem.innerText = `${numPages} pages`;
+  paginationElem.innerHTML = `${numPages} pages`;
 }
 
 function setHTML(data) {
@@ -76,7 +79,8 @@ function setHTML(data) {
   let html =
     "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
 
-  sortByKey(data, "artist").forEach((item) => {
+  // sortByKey(data, "artist").forEach((item) => {
+  data.forEach((item) => {
     html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
   });
   html += "</tbody></table>";
@@ -113,7 +117,15 @@ async function sendSearchRequest() {
   // console.log(data);
 }
 
+function handlePageChange(e) {
+  const newPageNum = e.target.value;
+  currPage = newPageNum;
+  sendSearchRequest();
+}
+
 btnSearch.addEventListener("click", (e) => {
   e.preventDefault();
   sendSearchRequest();
 });
+
+pageInput.addEventListener("change", handlePageChange);

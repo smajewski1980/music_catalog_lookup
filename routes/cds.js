@@ -32,7 +32,7 @@ router.post("/", query, (req, res, next) => {
   console.log(searchTerm);
   if (searchField.toLowerCase() === "artist") {
     pool.query(
-      "select * from cds where artist like $1 LIMIT $2 OFFSET ($3 - 1) * $2",
+      "select * from cds where artist like $1 order by artist, title LIMIT $2 OFFSET ($3 - 1) * $2",
       [`%${searchTerm}%`, offset, page],
       (err, result) => {
         res.status(200).send(result.rows);
@@ -40,7 +40,7 @@ router.post("/", query, (req, res, next) => {
     );
   } else if (searchField.toLowerCase() === "title") {
     pool.query(
-      "select * from cds where title like $1 LIMIT $2 OFFSET ($3 - 1) * $2",
+      "select * from cds where title like $1 order by title LIMIT $2 OFFSET ($3 - 1) * $2",
       [`%${searchTerm}%`, offset, page],
       (err, result) => {
         res.status(200).send(result.rows);
@@ -48,7 +48,7 @@ router.post("/", query, (req, res, next) => {
     );
   } else if (searchField.toLowerCase() === "location") {
     pool.query(
-      "select * from cds where location like $1 LIMIT $2 OFFSET ($3 - 1) * $2",
+      "select * from cds where location like $1 order by location LIMIT $2 OFFSET ($3 - 1) * $2",
       [`%${searchTerm}%`, offset, page],
       (err, result) => {
         res.status(200).send(result.rows);
