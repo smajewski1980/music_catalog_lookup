@@ -68,7 +68,7 @@ async function setPagination(searchObj) {
 }
 
 function setHTML(data) {
-  let qty = data.length;
+  // let qty = data.length;
   let html =
     "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
 
@@ -101,7 +101,9 @@ async function sendSearchRequest() {
   const data = await response.json();
 
   setHTML(data);
+  console.log(data.length);
   if (data.length === offset || currPage > 1) {
+    console.log("its calling set pagination func");
     setPagination(searchObj);
   } else {
     setQtyText(data.length);

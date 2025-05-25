@@ -504,7 +504,7 @@ fieldset input[type="radio"] {
 /* cd animation ********************************************************* */
 .cd-animation-wrapper {
   --total-animation-duration: 1s;
-  --delay: 0s;
+  --delay: 1s;
   width: 500px;
   height: 600px;
   position: fixed;
@@ -893,6 +893,7 @@ td {
 
 .pagination-text {
   font-size: 1.25rem;
+  min-height: 28px;
 }
 
 #page-input {
