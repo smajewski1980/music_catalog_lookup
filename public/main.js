@@ -46,19 +46,10 @@ function sortByKey(array, key) {
   });
 }
 
-// i want to try getting the data but only generating html a little at a times
-
 // need pagination
 async function setQtyText(qty) {
-  totalQtyElem.innerText = `Viewing ${qty} of ${qty} results.`;
-  // setPagination(null);
+  totalQtyElem.innerText = `There are ${qty} results.`;
   paginationElem.innerText = "";
-  // const response = await fetch(`/api/${format.toLowerCase()}/total`);
-  // const data = await response.json();
-  // totalQtyElem.innerText = `Viewing ${qty > offset ? offset : qty} of ${
-  //   data.count
-  // } results.`;
-  // setPagination(data.count);
 }
 
 // need to dynamically hook up the pagination links
@@ -69,9 +60,9 @@ async function setPagination() {
   const numPages = Math.ceil(data.count / offset);
   pageInput.max = numPages;
   pageInput.style.display = "inline";
-  totalQtyElem.innerText = `Viewing ${offset} of ${data.count} results.`;
+  totalQtyElem.innerText = `There are ${data.count} results.`;
   paginationElem.innerText = "";
-  paginationElem.innerHTML = `${numPages} pages`;
+  paginationElem.innerHTML = `of ${numPages} pages`;
 }
 
 function setHTML(data) {
@@ -86,9 +77,11 @@ function setHTML(data) {
   html += "</tbody></table>";
   resultsDiv.innerHTML = html;
   // resultsQty.innerText = `There are ${qty} results.`;
-  setQtyText(qty);
-  if (qty === offset) {
+
+  if (qty === offset || currPage > 1) {
     setPagination();
+  } else {
+    setQtyText(qty);
   }
 }
 

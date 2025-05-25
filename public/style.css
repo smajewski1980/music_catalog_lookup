@@ -896,4 +896,7 @@ td {
 
 #page-input {
   display: none;
+  font: inherit;
+  width: 3.5rem;
+  padding-inline: 0.25rem;
 }
