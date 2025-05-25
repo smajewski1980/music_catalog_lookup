@@ -53,8 +53,15 @@ async function setQtyText(qty) {
 }
 
 // need to dynamically hook up the pagination links
-async function setPagination() {
-  const response = await fetch(`/api/${format.toLowerCase()}/total`);
+async function setPagination(searchObj) {
+  const options = {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(searchObj),
+  };
+  const response = await fetch(`/api/${format.toLowerCase()}/total`, options);
   const data = await response.json();
 
   const numPages = Math.ceil(data.count / offset);
@@ -78,11 +85,11 @@ function setHTML(data) {
   resultsDiv.innerHTML = html;
   // resultsQty.innerText = `There are ${qty} results.`;
 
-  if (qty === offset || currPage > 1) {
-    setPagination();
-  } else {
-    setQtyText(qty);
-  }
+  // if (qty === offset || currPage > 1) {
+  //   setPagination();
+  // } else {
+  //   setQtyText(qty);
+  // }
 }
 
 async function sendSearchRequest() {
@@ -106,7 +113,12 @@ async function sendSearchRequest() {
   const data = await response.json();
 
   setHTML(data);
-
+  if (data.length === offset || currPage > 1) {
+    setPagination(searchObj);
+  } else {
+    setQtyText(data.length);
+    pageInput.style.display = "none";
+  }
   // console.log(data);
 }
 
@@ -118,6 +130,8 @@ function handlePageChange(e) {
 
 btnSearch.addEventListener("click", (e) => {
   e.preventDefault();
+  currPage = 1;
+  pageInput.value = 1;
   sendSearchRequest();
 });
 
