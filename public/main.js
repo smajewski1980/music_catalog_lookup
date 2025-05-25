@@ -28,9 +28,6 @@ searchRadioBtns.forEach((btn) => {
 formatRadioBtns.forEach((btn) => {
   btn.addEventListener("change", (e) => {
     format = e.target.value;
-    // if (format === "CDs") {
-    //   addAnimations();
-    // }
   });
 });
 
@@ -46,13 +43,11 @@ function sortByKey(array, key) {
   });
 }
 
-// need pagination
 async function setQtyText(qty) {
   totalQtyElem.innerText = `There are ${qty} results.`;
   paginationElem.innerText = "";
 }
 
-// need to dynamically hook up the pagination links
 async function setPagination(searchObj) {
   const options = {
     method: "POST",
@@ -77,19 +72,12 @@ function setHTML(data) {
   let html =
     "<table><thead><tr><th>artist</th><th>title</th><th>location</th></tr></thead><tbody>";
 
-  // sortByKey(data, "artist").forEach((item) => {
   data.forEach((item) => {
     html += `<tr><td class="td-artist" title="${item.artist}">${item.artist}</td><td class="td-title" title="${item.title}">${item.title}</td><td class="td-location">${item.location}</td></tr>`;
   });
+
   html += "</tbody></table>";
   resultsDiv.innerHTML = html;
-  // resultsQty.innerText = `There are ${qty} results.`;
-
-  // if (qty === offset || currPage > 1) {
-  //   setPagination();
-  // } else {
-  //   setQtyText(qty);
-  // }
 }
 
 async function sendSearchRequest() {
@@ -119,7 +107,6 @@ async function sendSearchRequest() {
     setQtyText(data.length);
     pageInput.style.display = "none";
   }
-  // console.log(data);
 }
 
 function handlePageChange(e) {
