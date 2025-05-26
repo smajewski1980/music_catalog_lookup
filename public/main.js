@@ -101,9 +101,7 @@ async function sendSearchRequest() {
   const data = await response.json();
 
   setHTML(data);
-  console.log(data.length);
   if (data.length === offset || currPage > 1) {
-    console.log("its calling set pagination func");
     setPagination(searchObj);
   } else {
     setQtyText(data.length);
