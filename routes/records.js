@@ -3,11 +3,6 @@ const router = express.Router();
 const pool = require("../db_connect");
 const query = require("../middleware/query");
 
-// router.get("/", (req, res, next) => {
-//   console.log("root records endpoint hit");
-//   res.status(200).send("the root records endpoint");
-// });
-
 router.post("/total", (req, res, next) => {
   const { searchField, searchTerm } = req.body;
   pool.query(

@@ -31,18 +31,6 @@ formatRadioBtns.forEach((btn) => {
   });
 });
 
-function sortByKey(array, key) {
-  return array.sort(function (a, b) {
-    if (a[key].toLowerCase() < b[key].toLowerCase()) {
-      return -1;
-    }
-    if (a[key].toLowerCase() > b[key].toLowerCase()) {
-      return 1;
-    }
-    return 0;
-  });
-}
-
 async function setQtyText(qty) {
   totalQtyElem.innerText = `There are ${qty} results.`;
   paginationElem.innerText = "";
