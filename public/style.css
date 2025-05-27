@@ -777,7 +777,7 @@ fieldset input[type="radio"] {
 @keyframes left-lower-arm-animation {
   0%,
   85% {
-    rotate: 180deg;
+    rotate: -180deg;
   }
   100% {
     rotate: 0deg;
@@ -800,7 +800,7 @@ fieldset input[type="radio"] {
   }
   25%,
   75% {
-    rotate: 180deg;
+    rotate: -140deg;
   }
 }
 
@@ -854,7 +854,7 @@ fieldset input[type="radio"] {
   }
   25%,
   75% {
-    rotate: 180deg;
+    rotate: 140deg;
   }
 }
 
