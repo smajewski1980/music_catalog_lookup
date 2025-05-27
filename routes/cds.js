@@ -23,7 +23,7 @@ router.post("/total", (req, res, next) => {
         console.log(err);
         return res.status(500).send("problem with something");
       }
-      console.log(result.rows[0]);
+      // console.log(result.rows[0]);
       return res.json(result.rows[0]);
     }
   );

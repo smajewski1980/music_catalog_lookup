@@ -38,9 +38,36 @@ const animationClasses = [
   "right-leg-lower-animation",
 ];
 
+const cdScrollAnimationClasses = [
+  "cd-scroll-body-animation",
+  "cd-scroll-left-arm-wrapper-animation",
+  "cd-scroll-right-arm-wrapper-animation",
+  "cd-scroll-left-arm-lower-animation",
+  "cd-scroll-right-arm-lower-animation",
+  "cd-scroll-left-leg-wrapper-animation",
+  "cd-scroll-right-leg-wrapper-animation",
+  "cd-scroll-left-leg-lower-animation",
+  "cd-scroll-right-leg-lower-animation",
+];
+
 function addAnimations() {
   for (let i = 0; i < elementsArray.length; i++) {
     elementsArray[i].classList.add(animationClasses[i]);
+  }
+}
+
+function removeAnimationClasses() {
+  for (let i = 0; i < elementsArray.length; i++) {
+    elementsArray[i].style.rotate = "0";
+  }
+  for (let i = 1; i < elementsArray.length; i++) {
+    elementsArray[i].classList.remove(animationClasses[i]);
+  }
+}
+
+function addScrollAnimations() {
+  for (let i = 1; i < elementsArray.length; i++) {
+    elementsArray[i].classList.add(cdScrollAnimationClasses[i - 1]);
   }
 }
 
@@ -49,7 +76,9 @@ function handleSearchClick() {
     addAnimations();
     setTimeout(() => {
       cdsFlag = false;
-    }, 2000);
+      removeAnimationClasses();
+      addScrollAnimations();
+    }, 1500);
   }
 }
 
