@@ -15,7 +15,7 @@ router.post("/total", (req, res, next) => {
     [`%${searchTerm}%`],
     (err, result) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         return res.status(500).send("problem with something");
       }
       // console.log(result.rows[0]);

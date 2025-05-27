@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "jest --watchAll --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,9 @@
     "express-router": "^0.0.1",
     "nodemon": "^3.1.10",
     "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
   }
 }

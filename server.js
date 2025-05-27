@@ -17,6 +17,8 @@ app.use("/api/records", records);
 
 const PORT = process.env.PORT || 5500;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`listening on port: ${PORT}`);
 });
+
+module.exports = server;
