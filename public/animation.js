@@ -39,6 +39,7 @@ const animationClasses = [
 ];
 
 const cdScrollAnimationClasses = [
+  "cd-scroll-animation-wrapper-animation",
   "cd-scroll-body-animation",
   "cd-scroll-left-arm-wrapper-animation",
   "cd-scroll-right-arm-wrapper-animation",
@@ -57,6 +58,7 @@ function addAnimations() {
 }
 
 function removeAnimationClasses() {
+  animationWrapper.style.left = "50%";
   for (let i = 0; i < elementsArray.length; i++) {
     elementsArray[i].style.rotate = "0";
   }
@@ -66,8 +68,8 @@ function removeAnimationClasses() {
 }
 
 function addScrollAnimations() {
-  for (let i = 1; i < elementsArray.length; i++) {
-    elementsArray[i].classList.add(cdScrollAnimationClasses[i - 1]);
+  for (let i = 0; i < elementsArray.length; i++) {
+    elementsArray[i].classList.add(cdScrollAnimationClasses[i]);
   }
 }
 

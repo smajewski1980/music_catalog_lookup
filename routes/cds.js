@@ -34,7 +34,7 @@ router.post("/", query, (req, res, next) => {
   const offset = req.offset;
 
   const { searchField, searchTerm } = req.body;
-  console.log(searchTerm);
+  // console.log(searchTerm);
   if (searchField.toLowerCase() === "artist") {
     pool.query(
       "select * from cds where artist like $1 order by artist, title LIMIT $2 OFFSET ($3 - 1) * $2",

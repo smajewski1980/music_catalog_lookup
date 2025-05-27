@@ -514,23 +514,38 @@ fieldset input[type="radio"] {
 }
 
 .animation-wrapper-animation {
-  animation: cd-fly-in var(--total-animation-duration) ease forwards;
+  animation: cd-fly-in var(--total-animation-duration) ease-out forwards;
   animation-delay: var(--delay);
 }
 
 @keyframes cd-fly-in {
   0% {
     left: -100%;
-    top: 600%;
   }
-  60% {
-    top: -25%;
-  }
-
   100% {
     left: 50%;
+  }
+}
+
+@keyframes cd-scroll-wrapper-animation {
+  0%,
+  50%,
+  100% {
     top: 12%;
   }
+  25% {
+    top: 11%;
+  }
+  75% {
+    top: 10%;
+  }
+}
+
+.cd-scroll-animation-wrapper-animation {
+  animation-delay: 0s;
+  animation-name: cd-scroll-wrapper-animation;
+  animation-timing-function: ease-out;
+  animation-timeline: scroll();
 }
 
 #cd-body,
@@ -571,21 +586,22 @@ fieldset input[type="radio"] {
 
 .cd-scroll-body-animation {
   animation-name: cd-scroll-turn-head;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-out;
   animation-timeline: scroll();
 }
 
 @keyframes cd-scroll-turn-head {
   0%,
+  50%,
   100% {
     rotate: 0deg;
   }
-  50% {
-    rotate: 0deg;
+  25% {
+    rotate: 10deg;
   }
-  25%,
+
   75% {
-    rotate: 5deg;
+    rotate: -5deg;
   }
 }
 
@@ -599,7 +615,7 @@ fieldset input[type="radio"] {
 }
 
 @keyframes left-upper-leg-animation {
-  /* 0%,
+  0%,
   25%,
   50%,
   75% {
@@ -615,14 +631,27 @@ fieldset input[type="radio"] {
 
   100% {
     rotate: 0deg;
-  } */
-  0%,
-  90% {
-    rotate: 55deg;
   }
+}
+
+@keyframes cd-scroll-left-upper-leg-animation {
+  0%,
   100% {
     rotate: 0deg;
   }
+  50% {
+    rotate: -10deg;
+  }
+  25%,
+  75% {
+    rotate: 25deg;
+  }
+}
+
+.cd-scroll-left-leg-wrapper-animation {
+  animation-name: cd-scroll-left-upper-leg-animation;
+  animation-timing-function: linear;
+  animation-timeline: scroll();
 }
 
 @keyframes left-lower-leg-animation {
@@ -645,8 +674,28 @@ fieldset input[type="radio"] {
   }
 }
 
+@keyframes cd-scroll-left-lower-leg-animation {
+  0%,
+  50%,
+  100% {
+    rotate: 0deg;
+    transform: translateX(0px);
+  }
+  25%,
+  75% {
+    rotate: -45deg;
+    transform: translateX(-10px);
+  }
+}
+
+.cd-scroll-left-leg-lower-animation {
+  animation-name: cd-scroll-left-lower-leg-animation;
+  animation-timing-function: linear;
+  animation-timeline: scroll();
+}
+
 @keyframes right-upper-leg-animation {
-  /* 0%,
+  0%,
   25%,
   50%,
   75% {
@@ -662,14 +711,27 @@ fieldset input[type="radio"] {
 
   100% {
     rotate: 0deg;
-  } */
-  0%,
-  90% {
-    rotate: -55deg;
   }
+}
+
+@keyframes cd-scroll-right-upper-leg-animation {
+  0%,
   100% {
     rotate: 0deg;
   }
+  50% {
+    rotate: 10deg;
+  }
+  25%,
+  75% {
+    rotate: -35deg;
+  }
+}
+
+.cd-scroll-right-leg-wrapper-animation {
+  animation-name: cd-scroll-right-upper-leg-animation;
+  animation-timing-function: linear;
+  animation-timeline: scroll();
 }
 
 @keyframes right-lower-leg-animation {
@@ -692,6 +754,26 @@ fieldset input[type="radio"] {
   }
 }
 
+@keyframes cd-scroll-right-lower-leg-animation {
+  0%,
+  50%,
+  100% {
+    rotate: 0deg;
+    transform: translateX(0px);
+  }
+  25%,
+  75% {
+    rotate: 45deg;
+    transform: translateX(-10px);
+  }
+}
+
+.cd-scroll-right-leg-lower-animation {
+  animation-name: cd-scroll-right-lower-leg-animation;
+  animation-timing-function: linear;
+  animation-timeline: scroll();
+}
+
 #left-leg-wrapper {
   transform-origin: top center;
   height: 250px;
@@ -702,13 +784,14 @@ fieldset input[type="radio"] {
 }
 
 .left-leg-wrapper-animation {
-  animation: left-upper-leg-animation var(--total-animation-duration) ease
+  animation: left-upper-leg-animation var(--total-animation-duration) linear
     forwards;
   animation-delay: var(--delay);
 }
 
 #cd-left-leg-1 {
   left: 31%;
+  transform-origin: 0px 30px;
 }
 
 #cd-left-leg-2 {
@@ -717,8 +800,8 @@ fieldset input[type="radio"] {
 }
 
 .left-leg-lower-animation {
-  /* animation: left-lower-leg-animation var(--total-animation-duration) linear
-    forwards; */
+  animation: left-lower-leg-animation var(--total-animation-duration) linear
+    forwards;
   animation-delay: var(--delay);
 }
 
@@ -732,7 +815,7 @@ fieldset input[type="radio"] {
 }
 
 .right-leg-wrapper-animation {
-  animation: right-upper-leg-animation var(--total-animation-duration) ease
+  animation: right-upper-leg-animation var(--total-animation-duration) linear
     forwards;
   animation-delay: var(--delay);
 }
@@ -744,8 +827,8 @@ fieldset input[type="radio"] {
 }
 
 .right-leg-lower-animation {
-  /* animation: right-lower-leg-animation var(--total-animation-duration) linear
-    forwards; */
+  animation: right-lower-leg-animation var(--total-animation-duration) linear
+    forwards;
   animation-delay: var(--delay);
 }
 
@@ -766,7 +849,7 @@ fieldset input[type="radio"] {
 
 @keyframes left-upper-arm-animation {
   0%,
-  85% {
+  80% {
     rotate: -140deg;
   }
   100% {
@@ -832,7 +915,7 @@ fieldset input[type="radio"] {
 
 @keyframes right-upper-arm-animation {
   0%,
-  85% {
+  80% {
     rotate: 45deg;
   }
   100% {
