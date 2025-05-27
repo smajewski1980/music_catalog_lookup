@@ -514,16 +514,22 @@ fieldset input[type="radio"] {
 }
 
 .animation-wrapper-animation {
-  animation: cd-fly-in var(--total-animation-duration) ease-out forwards;
+  animation: cd-fly-in var(--total-animation-duration) ease forwards;
   animation-delay: var(--delay);
 }
 
 @keyframes cd-fly-in {
   0% {
     left: -100%;
+    top: 600%;
   }
+  60% {
+    top: -25%;
+  }
+
   100% {
     left: 50%;
+    top: 12%;
   }
 }
 
@@ -593,7 +599,7 @@ fieldset input[type="radio"] {
 }
 
 @keyframes left-upper-leg-animation {
-  0%,
+  /* 0%,
   25%,
   50%,
   75% {
@@ -607,6 +613,13 @@ fieldset input[type="radio"] {
     rotate: -25deg;
   }
 
+  100% {
+    rotate: 0deg;
+  } */
+  0%,
+  90% {
+    rotate: 55deg;
+  }
   100% {
     rotate: 0deg;
   }
@@ -633,7 +646,7 @@ fieldset input[type="radio"] {
 }
 
 @keyframes right-upper-leg-animation {
-  0%,
+  /* 0%,
   25%,
   50%,
   75% {
@@ -647,6 +660,13 @@ fieldset input[type="radio"] {
     rotate: -35deg;
   }
 
+  100% {
+    rotate: 0deg;
+  } */
+  0%,
+  90% {
+    rotate: -55deg;
+  }
   100% {
     rotate: 0deg;
   }
@@ -682,7 +702,7 @@ fieldset input[type="radio"] {
 }
 
 .left-leg-wrapper-animation {
-  animation: left-upper-leg-animation var(--total-animation-duration) linear
+  animation: left-upper-leg-animation var(--total-animation-duration) ease
     forwards;
   animation-delay: var(--delay);
 }
@@ -697,8 +717,8 @@ fieldset input[type="radio"] {
 }
 
 .left-leg-lower-animation {
-  animation: left-lower-leg-animation var(--total-animation-duration) linear
-    forwards;
+  /* animation: left-lower-leg-animation var(--total-animation-duration) linear
+    forwards; */
   animation-delay: var(--delay);
 }
 
@@ -712,7 +732,7 @@ fieldset input[type="radio"] {
 }
 
 .right-leg-wrapper-animation {
-  animation: right-upper-leg-animation var(--total-animation-duration) linear
+  animation: right-upper-leg-animation var(--total-animation-duration) ease
     forwards;
   animation-delay: var(--delay);
 }
@@ -724,8 +744,8 @@ fieldset input[type="radio"] {
 }
 
 .right-leg-lower-animation {
-  animation: right-lower-leg-animation var(--total-animation-duration) linear
-    forwards;
+  /* animation: right-lower-leg-animation var(--total-animation-duration) linear
+    forwards; */
   animation-delay: var(--delay);
 }
 
@@ -746,7 +766,7 @@ fieldset input[type="radio"] {
 
 @keyframes left-upper-arm-animation {
   0%,
-  80% {
+  85% {
     rotate: -140deg;
   }
   100% {
@@ -812,7 +832,7 @@ fieldset input[type="radio"] {
 
 @keyframes right-upper-arm-animation {
   0%,
-  80% {
+  85% {
     rotate: 45deg;
   }
   100% {
