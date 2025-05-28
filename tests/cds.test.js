@@ -24,7 +24,7 @@ describe("POST /total", () => {
 describe("returns one page of results when searchTerm not included", () => {
   const executeReq = async (field) => {
     return await request(server)
-      .post("/api/records?page=1&offset=250")
+      .post("/api/cds?page=1&offset=250")
       .send({ searchField: field, searchTerm: "" });
   };
 
@@ -53,7 +53,7 @@ describe("returns one page of results when searchTerm not included", () => {
 describe("returns results that include searchTerm", () => {
   const executeReq = async (field, term) => {
     return await request(server)
-      .post("/api/records?page=1&offset=250")
+      .post("/api/cds?page=1&offset=250")
       .send({ searchField: field, searchTerm: term });
   };
 
