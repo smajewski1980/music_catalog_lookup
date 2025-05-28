@@ -57,24 +57,27 @@ describe("returns results that include searchTerm", () => {
       .send({ searchField: field, searchTerm: term });
   };
 
-  test("returns one page of cds by artist", async () => {
+  test("returns a result that includes the searchTerm", async () => {
     const res = await executeReq("artist", "The");
 
     expect(res.status).toEqual(200);
     expect(res.body.length).toBeGreaterThanOrEqual(1);
+    expect(res.body[0].artist).toMatch(/The/);
   });
 
-  test("returns one page of cds by title", async () => {
+  test("returns a result that includes the searchTerm", async () => {
     const res = await executeReq("title", "The");
 
     expect(res.status).toEqual(200);
     expect(res.body.length).toBeGreaterThanOrEqual(1);
+    expect(res.body[0].title).toMatch(/The/);
   });
 
-  test("returns one page of cds by location", async () => {
+  test("returns a result that includes the searchTerm", async () => {
     const res = await executeReq("location", "Jazz");
 
     expect(res.status).toEqual(200);
     expect(res.body.length).toBeGreaterThanOrEqual(1);
+    expect(res.body[0].location).toMatch(/Jazz/);
   });
 });

@@ -63,6 +63,7 @@ describe("returns results that include searchTerm", () => {
 
     expect(res.status).toEqual(200);
     expect(res.body.length).toBeGreaterThanOrEqual(1);
+    expect(res.body[0].artist).toMatch(/The/);
   });
 
   test("returns a result containing the searchTerm", async () => {
@@ -70,6 +71,7 @@ describe("returns results that include searchTerm", () => {
 
     expect(res.status).toEqual(200);
     expect(res.body.length).toBeGreaterThanOrEqual(1);
+    expect(res.body[0].title).toMatch(/The/);
   });
 
   test("returns a result containing the searchTerm", async () => {
@@ -77,5 +79,6 @@ describe("returns results that include searchTerm", () => {
 
     expect(res.status).toEqual(200);
     expect(res.body.length).toBeGreaterThanOrEqual(1);
+    expect(res.body[0].location).toMatch(/Jazz/);
   });
 });
