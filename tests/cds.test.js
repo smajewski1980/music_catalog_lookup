@@ -32,21 +32,21 @@ describe("returns one page of results when searchTerm not included", () => {
     const res = await executeReq("artist");
 
     expect(res.status).toEqual(200);
-    expect(res.body.length).toBe(250);
+    expect(res.body).toHaveLength(250);
   });
 
   test("returns one page of cds by title", async () => {
     const res = await executeReq("title");
 
     expect(res.status).toEqual(200);
-    expect(res.body.length).toBe(250);
+    expect(res.body).toHaveLength(250);
   });
 
   test("returns one page of cds by location", async () => {
     const res = await executeReq("location");
 
     expect(res.status).toEqual(200);
-    expect(res.body.length).toBe(250);
+    expect(res.body).toHaveLength(250);
   });
 });
 

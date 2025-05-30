@@ -13,7 +13,6 @@ router.post("/total", (req, res, next) => {
         console.log(err);
         return res.status(500).send("problem with something");
       }
-      // console.log(result.rows[0]);
       return res.json(result.rows[0]);
     }
   );
@@ -22,34 +21,23 @@ router.post("/total", (req, res, next) => {
 router.post("/", query, (req, res, next) => {
   const page = req.page;
   const offset = req.offset;
-
   const { searchField, searchTerm } = req.body;
-  // console.log(searchTerm);
-  if (searchField.toLowerCase() === "artist") {
-    pool.query(
-      "select * from cds where artist like $1 order by artist, title LIMIT $2 OFFSET ($3 - 1) * $2",
-      [`%${searchTerm}%`, offset, page],
-      (err, result) => {
-        return res.status(200).send(result.rows);
-      }
-    );
-  } else if (searchField.toLowerCase() === "title") {
-    pool.query(
-      "select * from cds where title like $1 order by title, artist LIMIT $2 OFFSET ($3 - 1) * $2",
-      [`%${searchTerm}%`, offset, page],
-      (err, result) => {
-        return res.status(200).send(result.rows);
-      }
-    );
-  } else if (searchField.toLowerCase() === "location") {
-    pool.query(
-      "select * from cds where location like $1 order by location, artist, title LIMIT $2 OFFSET ($3 - 1) * $2",
-      [`%${searchTerm}%`, offset, page],
-      (err, result) => {
-        return res.status(200).send(result.rows);
-      }
-    );
-  }
+  let orderBy;
+
+  orderBy =
+    searchField.toLowerCase() === "artist"
+      ? (orderBy = "artist, title")
+      : searchField.toLowerCase() === "title"
+      ? (orderBy = "title, artist")
+      : (orderBy = "location, artist, title");
+
+  pool.query(
+    `select * from cds where ${searchField} like $1 order by ${orderBy} LIMIT $2 OFFSET ($3 - 1) * $2`,
+    [`%${searchTerm}%`, offset, page],
+    (err, result) => {
+      return res.status(200).send(result.rows);
+    }
+  );
 });
 
 module.exports = router;

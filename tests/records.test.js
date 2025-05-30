@@ -35,19 +35,19 @@ describe("returns one page of results if no searchTerm", () => {
   it("returns 250 results for artist with no searchTerm", async () => {
     const res = await executeReq("artist");
     expect(res.status).toBe(200);
-    expect(res.body.length).toBe(250);
+    expect(res.body).toHaveLength(250);
   });
 
   it("returns 250 results for title with no searchTerm", async () => {
     const res = await executeReq("title");
     expect(res.status).toBe(200);
-    expect(res.body.length).toBe(250);
+    expect(res.body).toHaveLength(250);
   });
 
   it("returns 250 results for location with no searchTerm", async () => {
     const res = await executeReq("location");
     expect(res.status).toBe(200);
-    expect(res.body.length).toBe(250);
+    expect(res.body).toHaveLength(250);
   });
 });
 
