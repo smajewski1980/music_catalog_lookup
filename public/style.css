@@ -68,8 +68,15 @@ fieldset input[type="radio"] {
   display: inline-block;
   font-weight: 600;
   letter-spacing: 1px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, scale 0.3s ease, font-size 0.3s ease;
   outline: 2px solid black;
+  width: 200px;
+  text-align: center;
+}
+
+.search-wrapper label:hover,
+.search-wrapper label:focus-visible {
+  scale: 1.025;
 }
 
 .search-wrapper label:nth-of-type(2) {
