@@ -23,7 +23,7 @@ body {
 
 h1 {
   display: inline;
-  margin-right: 1rem;
+  margin-inline: 1rem;
   vertical-align: text-bottom;
 }
 
@@ -31,6 +31,17 @@ fieldset {
   width: fit-content;
   /* min-height: 60px; */
   font-size: 1.25rem;
+}
+
+.field-radio-btns-wrapper {
+  min-width: 627px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.search-field-select-wrapper {
+  display: flex;
 }
 
 fieldset input[type="radio"]:not(:last-child) {
@@ -65,11 +76,10 @@ fieldset input[type="radio"] {
   user-select: none;
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
-  display: inline-block;
   font-weight: 600;
   letter-spacing: 1px;
   outline: 3px solid black;
-  height: 53px;
+  /* height: 53px; */
   width: 200px;
   text-align: center;
   position: relative;
@@ -117,13 +127,29 @@ fieldset input[type="radio"] {
 }
 
 .search-wrapper input[type="text"] {
-  padding: 0.25rem;
+  padding: 0rem 0.75rem;
   font: inherit;
-  width: 300px;
+  width: 500px;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  outline: 1px solid rgb(113, 0, 179);
+  border-radius: 5px;
 }
 .search-wrapper button {
-  padding: 0.25rem 0.5rem;
-  margin-left: 0.25rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  background: rgb(113, 0, 179);
+  padding: 1.25rem 2rem;
+  color: whitesmoke;
+  user-select: none;
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
+  /* display: inline-block; */
+  font-weight: 600;
+  letter-spacing: 1px;
+  outline: 2px solid black;
+  height: 53px;
+  text-align: center;
 }
 
 .search-outer-wrapper {
