@@ -55,6 +55,7 @@ h1 {
 
 .search-outer-wrapper {
   position: relative;
+  margin-block-start: 0.5rem;
 }
 
 .search-outer-wrapper::before {
@@ -91,7 +92,7 @@ label {
   box-shadow: 0px 2px 0px black;
 }
 
-.search-wrapper label::before,
+label::before,
 .search-wrapper button::before {
   content: "";
   position: absolute;
@@ -130,7 +131,7 @@ label:focus-visible,
 input[type="radio"]:checked + label {
   background: rgb(158, 0, 250);
   filter: blur(0.5px);
-  height: 50px;
+  height: 47px;
   width: 190px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -138,10 +139,10 @@ input[type="radio"]:checked + label {
 
 .format-select-wrapper [type="radio"]:checked + label {
   width: 175px;
-  height: 47px;
+  /* height: 47px; */
 }
 
-.search-wrapper input[type="radio"]:checked + label::before {
+input[type="radio"]:checked + label::before {
   width: 95%;
   height: 8px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -176,10 +177,10 @@ input[type="radio"]:checked + label {
   /* display: inline-block; */
   font-weight: 600;
   letter-spacing: 1px;
-  outline: 2px solid black;
   height: 53px;
   text-align: center;
   position: relative;
+  box-shadow: 0px 1px 0px black;
 }
 
 .qty {
