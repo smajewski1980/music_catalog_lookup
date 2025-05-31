@@ -22,7 +22,7 @@
   width: 500px;
   height: 600px;
   position: fixed;
-  top: 12%;
+  top: 25%;
   left: -100%;
   scale: 0.8;
 }
@@ -45,13 +45,13 @@
   0%,
   50%,
   100% {
-    top: 12%;
+    top: 25%;
   }
   25% {
-    top: 11%;
+    top: 22%;
   }
   75% {
-    top: 10%;
+    top: 20%;
   }
 }
 

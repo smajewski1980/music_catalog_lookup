@@ -17,46 +17,35 @@ button {
 body {
   background-color: rgb(236, 236, 236);
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  padding: 1rem 0 0 1rem;
+  /* padding: 1rem 0 0 1rem; */
   min-height: 100vh;
 }
-
-h1 {
-  display: inline;
-  margin-inline: 1rem;
-  vertical-align: text-bottom;
+header {
+  display: flex;
 }
-
-fieldset {
-  width: fit-content;
-  /* min-height: 60px; */
-  font-size: 1.25rem;
+h1 {
+  margin-inline: 1.25rem 5.5rem;
+  margin-block: 1.5rem;
 }
 
 .field-radio-btns-wrapper {
   min-width: 627px;
-  display: flex;
-  justify-content: space-between;
   align-items: end;
-}
-
-.search-field-select-wrapper {
-  display: flex;
-}
-
-fieldset input[type="radio"]:not(:last-child) {
-  margin-right: 1rem;
-}
-
-fieldset label,
-fieldset input[type="radio"] {
-  cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .format-select-wrapper {
-  display: inline-block;
-  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  width: 627px;
+  margin-bottom: 1rem;
 }
+
+/* .format-select-wrapper label {
+  width: 100%;
+} */
 
 .search-wrapper {
   padding: 1rem 1rem 1.75rem;
@@ -64,28 +53,46 @@ fieldset input[type="radio"] {
   margin-block-end: 1rem;
 }
 
-.search-wrapper input[type="radio"] {
+.search-outer-wrapper {
+  position: relative;
+}
+
+.search-outer-wrapper::before {
+  content: "Search Field";
+  position: absolute;
+  top: -1rem;
+  left: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.search-field-select-wrapper {
+  display: flex;
+}
+
+input[type="radio"] {
   display: none;
 }
 
-.search-wrapper label {
+label {
   border-radius: 5px;
   background: rgb(113, 0, 179);
   padding: 1.25rem 2rem;
+  cursor: pointer;
   color: whitesmoke;
   user-select: none;
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
   font-weight: 600;
   letter-spacing: 1px;
-  outline: 3px solid black;
-  /* height: 53px; */
-  width: 200px;
+  width: 95%;
+  margin-inline: auto;
   text-align: center;
   position: relative;
+  box-shadow: 0px 2px 0px black;
 }
 
-.search-wrapper label::before {
+.search-wrapper label::before,
+.search-wrapper button::before {
   content: "";
   position: absolute;
   bottom: -14px;
@@ -94,25 +101,44 @@ fieldset input[type="radio"] {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 25px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
   filter: blur(9px);
 }
-
-.search-wrapper label:hover,
-.search-wrapper label:focus-visible {
-  background: rgb(158, 0, 250);
+.search-wrapper .text-input-wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  height: 10px;
+  width: 97%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  filter: blur(9px);
+  margin-left: 0.5rem;
 }
 
-.search-wrapper input[type="radio"]:checked + label {
+label:hover,
+label:focus-visible,
+.search-wrapper button:hover,
+.search-wrapper button:focus-visible {
   background: rgb(84, 44, 102);
+}
+
+input[type="radio"]:checked + label {
+  background: rgb(158, 0, 250);
   filter: blur(0.5px);
-  outline: 3px solid rgb(113, 0, 179);
   height: 50px;
   width: 190px;
   font-size: 0.9rem;
   font-weight: 600;
-  outline: 2px solid black;
+}
+
+.format-select-wrapper [type="radio"]:checked + label {
+  width: 175px;
+  height: 47px;
 }
 
 .search-wrapper input[type="radio"]:checked + label::before {
@@ -122,11 +148,7 @@ fieldset input[type="radio"] {
   bottom: -12px;
 }
 
-.search-wrapper label:nth-of-type(2) {
-  margin-inline: 0.5rem;
-}
-
-.search-wrapper input[type="text"] {
+.search-wrapper .text-input-wrapper input[type="text"] {
   padding: 0rem 0.75rem;
   font: inherit;
   width: 500px;
@@ -134,13 +156,20 @@ fieldset input[type="radio"] {
   font-size: 1.5rem;
   outline: 1px solid rgb(113, 0, 179);
   border-radius: 5px;
+  height: 100%;
 }
+
+.text-input-wrapper {
+  position: relative;
+}
+
 .search-wrapper button {
   margin-left: 1rem;
   border-radius: 5px;
   background: rgb(113, 0, 179);
-  padding: 1.25rem 2rem;
+  padding: 1rem 2rem;
   color: whitesmoke;
+  cursor: pointer;
   user-select: none;
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
@@ -150,12 +179,7 @@ fieldset input[type="radio"] {
   outline: 2px solid black;
   height: 53px;
   text-align: center;
-}
-
-.search-outer-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  position: relative;
 }
 
 .qty {
