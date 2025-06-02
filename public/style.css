@@ -26,6 +26,7 @@ header {
 h1 {
   margin-inline: 1.25rem 5.5rem;
   margin-block: 1.5rem;
+  color: rgb(113, 0, 179);
 }
 
 .field-radio-btns-wrapper {
@@ -48,22 +49,28 @@ h1 {
 } */
 
 .search-wrapper {
-  padding: 1rem 1rem 1.75rem;
+  /* padding: 1rem 1rem 1.75rem; */
   width: fit-content;
   margin-block-end: 1rem;
-}
-
-.search-outer-wrapper {
+  margin-block-start: 1.5rem;
+  margin-inline-start: 1.25rem;
   position: relative;
-  margin-block-start: 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 53px;
 }
 
-.search-outer-wrapper::before {
+/* .search-wrapper * {
+  outline: 2px solid red;
+} */
+
+.search-wrapper::before {
   content: "Search Field";
   position: absolute;
-  top: -1rem;
-  left: 1.5rem;
+  top: -2rem;
+  left: 0.25rem;
   font-size: 1.25rem;
+  color: rgb(113, 0, 179);
 }
 
 .search-field-select-wrapper {
@@ -106,6 +113,7 @@ label::before,
   z-index: -1;
   filter: blur(9px);
 }
+
 .search-wrapper .text-input-wrapper::before {
   content: "";
   position: absolute;
@@ -162,6 +170,11 @@ input[type="radio"]:checked + label::before {
 
 .text-input-wrapper {
   position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 53px;
 }
 
 .search-wrapper button {
@@ -181,16 +194,26 @@ input[type="radio"]:checked + label::before {
   text-align: center;
   position: relative;
   box-shadow: 0px 1px 0px black;
+  width: 200px;
 }
 
-.qty {
-  font-size: 1.25rem;
-  padding-top: 0.25rem;
+.search-wrapper button:active {
+  background: rgb(158, 0, 250);
+  filter: blur(0.5px);
+  height: 50px;
+  width: 196px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.search-wrapper button::before:active {
+  background-color: red;
 }
 
 .pagination-text {
   font-size: 1.25rem;
   min-height: 28px;
+  margin-left: 1.5rem;
 }
 
 #page-input {
@@ -205,6 +228,7 @@ input[type="radio"]:checked + label::before {
   margin-top: 1rem;
   max-width: 65%;
   font-size: 1.25rem;
+  margin-left: 1.5rem;
 }
 
 th {
